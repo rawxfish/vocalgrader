@@ -13,7 +13,8 @@ class Trial < ActiveRecord::Base
 	attr_accessible :name
 	belongs_to :user
 
-
+	validates :user_id, presence: true  
+	
 	has_one :trial_expected_edge, foreign_key: "trial_id", dependent: :destroy
 	has_one :expected, :through => :trial_expected_edge,  source: :wave
 
