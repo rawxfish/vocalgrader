@@ -3,7 +3,7 @@
 # Table name: actual_waves
 #
 #  id                :integer          not null, primary key
-#  user_id           :integer
+#  trial_id          :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  file_file_name    :string(255)
@@ -13,10 +13,9 @@
 #
 
 class ActualWave < ActiveRecord::Base
-	attr_accessible :trial_id
+	attr_accessible :trial_id, :file
 
 	belongs_to :trial
-	attr_accessible :file
 
 	has_attached_file :file, :path => "uploads/#{:id}-actual.:extension"
 	validates_attachment_presence :file, :content_type => 'audio/x-wav'

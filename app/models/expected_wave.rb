@@ -3,7 +3,7 @@
 # Table name: expected_waves
 #
 #  id                :integer          not null, primary key
-#  user_id           :integer
+#  trial_id          :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  file_file_name    :string(255)
