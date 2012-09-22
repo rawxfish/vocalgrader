@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
+#  user_id    :integer
 #  expected   :string(255)
 #  actual     :string(255)
 #  grade_1    :integer
@@ -17,5 +18,5 @@
 #
 
 class Trial < ActiveRecord::Base
-  attr_accessible :actual, :expected, :name
+  attr_accessible :actual, :expected, :name, :grade_1, :grade_2, :grade_3, :grade_4, :grade_5, :grade_6
 end
