@@ -1,5 +1,5 @@
 Vocalgrader::Application.routes.draw do
-  get "trials/new"
+  resources :trials
 
   root to: 'pages#home'
 end
