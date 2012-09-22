@@ -11,7 +11,10 @@
 class Wave < ActiveRecord::Base
 	attr_accessible :path
 
-	 has_many :trial_wave_edges, foreign_key: "wave_id", dependent: :destroy
-  has_many :trials, :through => :trial_wave_edges, source: :trial
+	has_many :trial_expected_edges, foreign_key: "wave_id", dependent: :destroy
+  has_many :expected_trials, :through => :trial_expected_edges, source: :trial
 
+
+	has_many :trial_actual_edges, foreign_key: "wave_id", dependent: :destroy
+  has_many :actual_trials, :through => :trial_actual_edges, source: :trial
 end

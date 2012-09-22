@@ -14,9 +14,11 @@ class Trial < ActiveRecord::Base
 	belongs_to :user
 
 
-	has_many :trial_wave_edges, foreign_key: "trial_id", dependent: :destroy
-	has_many :expected, :through => :trial_wave_edges,  source: :trial
-	has_many :actual, :through => :trial_wave_edges,  source: :trial
+	has_one :trial_expected_edge, foreign_key: "trial_id", dependent: :destroy
+	has_one :expected, :through => :trial_expected_edge,  source: :wave
+
+	has_one :trial_actual_edge, foreign_key: "trial_id", dependent: :destroy
+	has_one :actual, :through => :trial_actual_edge,  source: :wave
 
 
 end
