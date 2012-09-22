@@ -3,6 +3,9 @@ class TrialsController < ApplicationController
   end
 
   def create
+    @trial = current_user.trials.create
+    @trial.build_expected_wave(:file => params[:trial][:file])
+    redirect_to root_path
   end
 
   def destroy
