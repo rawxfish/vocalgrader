@@ -1,6 +1,7 @@
 <h1>Vocal Grader</h1>
 
-<%= form_for Trial.new, :html => { :multipart => true } do |form| %>
-  Original File: <%= form.file_field :file %><br />
-  <%= form.submit "Submit", class: "btn btn-success" %>
+<p> Create a new trial </p>
+<%= form_for current_user.trials.build do |form| %>
+  Name: <%= form.text_field :name %>
+  <%= form.submit "Create", class: "btn btn-success" %>
 <% end %>
