@@ -1,4 +1,6 @@
 Vocalgrader::Application.routes.draw do
+  resources :trials
+
   root to: 'pages#home'
   
   resources :users, :only => [:show, :destroy]
