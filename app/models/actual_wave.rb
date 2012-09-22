@@ -9,13 +9,16 @@
 #
 
 class ActualWave < ActiveRecord::Base
-  attr_accessible :user_id
+	attr_accessible :user_id
 
-  belongs_to :trial
+	belongs_to :trial
+	attr_accessible :file
+
+	has_attached_file :file, :path => "uploads/#{:id}-actual.:extension"
+	validates_attachment_presence :file, :content_type => 'audio/x-wav'
 
 
-
-  	def size
+	def size
 		File.open(beat_data, "r").readlines.size - 1
 	end
 
@@ -46,5 +49,16 @@ class ActualWave < ActiveRecord::Base
 
 	def z_test
 		z_score = (mean - correct_tempo) / (std_dev / Math.sqrt(size))
+	end
+
+	private
+
+	def notes_output_path
+		"output-data/#{:id}-actual-notes.txt"
+	end
+
+	def expected_notes_output_path
+		id = self.trial
+		"output-data/"
 	end
 end
