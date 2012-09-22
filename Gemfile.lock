@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: a16a50a106432091fff0bf0ac398066803bb8791
+  specs:
+    paperclip (3.2.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,6 +43,7 @@ GEM
       rake
     arel (3.0.2)
     builder (3.0.3)
+    cocaine (0.3.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -135,6 +147,7 @@ DEPENDENCIES
   koala
   omniauth
   omniauth-facebook
+  paperclip!
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   sqlite3
