@@ -13,8 +13,8 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :provider, :uid
+	attr_accessible :email, :name, :password, :provider, :uid
 
-    has_many :trials, dependent: :destroy
+	has_many :trials, dependent: :destroy
 
 end
