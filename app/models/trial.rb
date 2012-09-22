@@ -18,5 +18,8 @@
 #
 
 class Trial < ActiveRecord::Base
-  attr_accessible :actual, :expected, :name, :grade_1, :grade_2, :grade_3, :grade_4, :grade_5, :grade_6
+  attr_accessible :actual, :expected, :name, 
+  :grade_1, :grade_2, :grade_3, :grade_4, :grade_5, :grade_6
+
+  belongs_to :user
 end
