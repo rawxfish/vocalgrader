@@ -2,10 +2,14 @@
 #
 # Table name: actual_waves
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                :integer          not null, primary key
+#  user_id           :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  file_file_name    :string(255)
+#  file_content_type :string(255)
+#  file_file_size    :integer
+#  file_updated_at   :datetime
 #
 
 class ActualWave < ActiveRecord::Base
@@ -51,14 +55,13 @@ class ActualWave < ActiveRecord::Base
 		z_score = (mean - correct_tempo) / (std_dev / Math.sqrt(size))
 	end
 
-	private
 
 	def notes_output_path
 		"output-data/#{:id}-actual-notes.txt"
 	end
 
 	def expected_notes_output_path
-		id = self.trial
-		"output-data/"
+		id = self.trial.expected_wave.id
+		"output-data/#{id}-expected-notes.txt"
 	end
 end
