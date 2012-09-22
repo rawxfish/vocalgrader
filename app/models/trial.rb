@@ -14,12 +14,10 @@ class Trial < ActiveRecord::Base
 	belongs_to :user
 
 	validates :user_id, presence: true  
-	
-	has_one :trial_expected_edge, foreign_key: "trial_id", dependent: :destroy
-	has_one :expected, :through => :trial_expected_edge,  source: :wave
 
-	has_one :trial_actual_edge, foreign_key: "trial_id", dependent: :destroy
-	has_one :actual, :through => :trial_actual_edge,  source: :wave
+	has_one :expected_wave, dependent: :destroy
+	has_many :actual_waves, dependent: :destroy, class_name: "ActualWave"
+
 
 
 end
