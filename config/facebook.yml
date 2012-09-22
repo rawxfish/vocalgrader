@@ -1,0 +1,12 @@
+development:
+  app_id: '189243011209926'
+  secret_key: '9994808d31e57f6ca56cce6fad694f28'
+
+# test:
+  # app_id: '309667242450387'
+  # secret_key: '244b01f39175423aab241a4a9a28bf5d'
+# 
+# production:
+  # app_id: '292893537470553'
+  # secret_key: 'd5016284d66159bd196cadbebae827ab'
+
