@@ -14,7 +14,7 @@
 
 class User < ActiveRecord::Base
 
-  attr_accessible :email, :name, :password, :provider, :uid
+  attr_accessible :email, :name, :password, :provider, :uid, :trials
   has_many :trials, dependent: :destroy
   
   def self.create_with_omniauth(auth)

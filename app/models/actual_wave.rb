@@ -13,6 +13,7 @@
 #
 
 class ActualWave < ActiveRecord::Base
+	attr_accessible :trial_id
 
 	belongs_to :trial
 	attr_accessible :file

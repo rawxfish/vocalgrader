@@ -3,6 +3,8 @@ class TrialsController < ApplicationController
   end
 
   def create
+    @trial = current_user.trials.create(params[:trial])
+    redirect_to @trial
   end
 
   def destroy
@@ -12,6 +14,7 @@ class TrialsController < ApplicationController
   end
 
   def show
+    @trial = Trial.find(params[:id])
   end
 
 end
