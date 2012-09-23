@@ -4,17 +4,105 @@
 	<%= high_chart("my_id", @h) %>
 
 
-<br />
-<br />
-<h3>Your scores:</h3>
-<p>Score 1:<%= @grades[0] %></p>
-<p>Score 2:<%= @grades[1] %></p>
-<p>Score 3:<%= @grades[2] %></p>
-<p>Score 4:<%= @grades[3] %></p>
+	<br />
+	<br />
+	<div class="arena">
+		<h3>Jury Decisions...</h3>
+		<table class="table table-striped">
+			<thead>
+				<th>
+					<img class="judges" src="http://localhost:3000/simon.jpg" />
+					<p>Simon Cowell</p>
+				</th>
+				<th>
+					<img class="judges" src="http://localhost:3000/randy.png" />
+					<p>Randy Jackson</p>
+				</th>
+				<th>
+					<img class="judges" src="http://localhost:3000/paula.jpg" />
+					<p>Paula Abdul</p>
+				</th>
+				<th>
+					<img class="judges" src="http://localhost:3000/obama.jpg" />
+					<p>Barack Obama</p>
+				</th>
+				<th>
+					<img class="judges" src="http://localhost:3000/grandma.jpg" />
+					<p>Grandma</p>
+				</th>
+			</thead>
+			<tbody class="scores">
+				<tr>
+					<td><%= @grades[0] %></td>
+					<td><%= @grades[1] %></td>
+					<td><%= @grades[2] %></td>
+					<td><%= @grades[3] %></td>
+					<td>0</td>
+				</tr>
+				<tr class="comments">
+					<% 4.times do |i|%>
+					<% if @grades[i] < 150 %>
+					<td class="green">
+						Beautiful.
+					</td>
+					<% elsif @grades[i] < 350 %>
+					<td class="yellow">
+						Not bad, not bad at all!
+					</td>
+
+					<% elsif @grades[i] < 600 %>
+					<td class="orange">
+						That was....OK...?
+					</td>
+
+					<% elsif @grades[i] < 900 %>
+					<td class="red">
+						What can I say...? That was pretty shitty.
+					</td>
+					<% else %>
+					<td class="black">
+						My ears are bleeding.
+					</td>
+					<% end %>
+					<% end %>
+					<td class="green">That's my grandkid!</td>
+				</tr>
+			</tbody>
+		</table>
 
 
+		<h4>Rubric</h4>
+		<table class="table table-striped">
+			<thead>
+				<th>Score</th>
+				<th>Your Skill Level</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>0 - 150</td>
+					<td>Pretty Good</td>
+				</tr>
+				<tr>
+					<td>150 - 350</td>
+					<td>Not Bad</td>
+				</tr>
+				<tr>
+					<td>350 - 600</td>
+					<td>Tolerable</td>
+				</tr>
+				<tr>
+					<td>600 - 900</td>
+					<td>Shitty</td>
+				</tr>
+				<tr>
+					<td> >900</td>
+					<td>Are you sure you're singing the right song....?</td>
+				</tr>
+			</tbody>
 
+		</table>
 
+	</div>
 
 </script>
 </body>
