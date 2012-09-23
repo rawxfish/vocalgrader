@@ -16,7 +16,7 @@ class ActualWave < ActiveRecord::Base
 	attr_accessible :file
 	belongs_to :trial
 
-	has_attached_file :file, :path => "uploads/#{:id}-actual.:extension"
+	has_attached_file :file, :path => "uploads/:id-actual.:extension"
 	validates_attachment_presence :file, :content_type => 'audio/x-wav'
 
 
