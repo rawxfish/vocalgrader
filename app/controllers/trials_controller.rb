@@ -45,7 +45,7 @@ class TrialsController < ApplicationController
         stuff2[0] = stuff[1].to_f
         stuff1[1] = i - 4
         stuff2[1] = i - 4
-       
+
         @freq1[i - 4] = stuff1[0]
         @freq2[i - 4] = stuff2[0]
       end
@@ -53,10 +53,11 @@ class TrialsController < ApplicationController
     end
     @max_freq = i - 4
     @h = LazyHighCharts::HighChart.new('graph') do |f|
-  f.options[:chart][:defaultSeriesType] = "line"
-  f.series(:name=>'expected', :data=>@freq1)
- f.series(:name=>'attempt', :data=>@freq2)
-end
+      f.options[:chart][:defaultSeriesType] = "line"
+      f.series(:name=>'expected', :data=>@freq1)
+      f.series(:name=>'attempt', :data=>@freq2)
+      f.title(text: "Your Performance Diagnostic")
+    end
   end
   
 end

@@ -1,0 +1,40 @@
+.judges{
+	width: 150px;
+	height: auto;
+}
+
+.scores{
+	font-size: 2em;
+}
+
+.comments {
+	font-size: .5em;
+}
+
+.green{
+	color: green;
+}
+
+.yellow{
+	color: gold;
+
+}
+
+.orange {
+	color: orange;
+
+}
+
+.red {
+	color: red;
+
+}
+
+.black{
+	color: black;
+
+}
+
+.table th, .table td {
+	width: 20% ;
+}

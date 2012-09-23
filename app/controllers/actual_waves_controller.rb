@@ -32,10 +32,8 @@ class ActualWavesController < ApplicationController
     @actual_wave.picture_from_url 'internal_tools/recorded_song.wav'
         if @actual_wave.save
       flash[:success] = "Music file add success!"
-      redirect_to @trial
     else
       flash[:error] = "Error: file could not be added"
-      redirect_to @trial
 
     end
 
