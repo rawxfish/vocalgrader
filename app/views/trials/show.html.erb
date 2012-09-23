@@ -46,5 +46,5 @@
 <% end %>
 
 <h3><%= link_to 'Record Yourself', new_actual_wave_path + "?trial_id=" + @trial.id.to_s %></h3>
-<%= link_to "See the Jury", judge_path, class: "btn btn-large btn-success"%>
+<%= link_to "See the Jury", judge_path + "?trial_id=#{@trial.id}&actual_id=#{@trial.actual_waves.first.id}", class: "btn btn-large btn-success"%>
 </div>
