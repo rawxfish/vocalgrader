@@ -13,8 +13,7 @@
 #
 
 class ActualWave < ActiveRecord::Base
-	attr_accessible :trial_id, :file
-
+	attr_accessible :file
 	belongs_to :trial
 
 	has_attached_file :file, :path => "uploads/#{:id}-actual.:extension"

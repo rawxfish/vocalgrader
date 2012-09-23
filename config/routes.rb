@@ -1,5 +1,6 @@
 Vocalgrader::Application.routes.draw do
   resources :trials
+  resources :expected_waves, :actual_waves
 
   root to: 'pages#home'
   

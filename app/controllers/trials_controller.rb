@@ -15,6 +15,7 @@ class TrialsController < ApplicationController
 
   def show
     @trial = Trial.find(params[:id])
+    @expected_wave = @trial.build_expected_wave
   end
 
 end

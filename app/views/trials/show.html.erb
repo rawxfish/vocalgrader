@@ -5,9 +5,10 @@
 <% if ExpectedWave.where(:trial_id => @trial.id).exists? %>
   <%= ExpectedWave.find(:trial_id => @trial.id) %>
 <% else %>
-  <%= form_for Trial.new, :html => { :mutlipart => true } do |f| %>
+  <%= form_for @expected_wave, :html => { :multipart => true } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
     <%= f.file_field :file %>
-    <%= f.hidden_field :trial_id, @trial.id %>
+    <%= f.hidden_field :trial_id, value: @trial.id %>
     <%= f.submit "Submit" %>
   <% end %>
 <% end %>
