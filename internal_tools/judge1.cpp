@@ -104,7 +104,7 @@ int main (int argc, char *argv[]) {
   ifp2 = fopen(buffer, "r");
 
   sprintf(buffer, "./output_data/%d-%d", id1, id2);
-  ofp = fopen(buffer , "w");
+  ofp = fopen(buffer , "wb");
 
   float n;
   int cnt = 0;
