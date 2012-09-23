@@ -1,9 +1,15 @@
-<div class="home">
-<h1>Become A Rockstar <span id="today">Today</span></h1>
+<head>
+	<style type="text/css">
+	.arena {
+		background-image: url('/assets/crisp_paper_ruffles.png')
+		border-radius: 10px;
+	}
+	
+	</style>
+</head>
 
-
-<!-- <% if user_signed_in? %>
 <h2> Your Trials </h2>
+<div class = "arena">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -33,11 +39,9 @@
 </table>
 
 
-<h2> Create a new trial </h2>
+<h2> Create A New Trial </h2>
 <%= form_for current_user.trials.build do |form| %>
 	Name: <%= form.text_field :name %>
 	<%= form.submit "Create", class: "btn btn-success" %>
 <% end %>
-
-<% end %> -->
 </div>
