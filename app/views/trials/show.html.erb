@@ -37,12 +37,14 @@
 </table>
 <% end %>
 
-
+<h3>Upload Yourself</h3>
 <%= form_for @trial.actual_waves.build, :html => { :multipart => true } do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <%= f.file_field :file %>
 <%= f.hidden_field :trial_id, value: @trial.id %>
 <%= f.submit "Submit", class: "btn btn-warning" %>
 <% end %>
+
+<h3><%= link_to 'Record Yourself', new_actual_wave_path + "?trial_id=" + @trial.id.to_s %></h3>
 <%= link_to "See the Jury", judge_path, class: "btn btn-large btn-success"%>
 </div>

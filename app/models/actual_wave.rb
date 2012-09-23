@@ -20,46 +20,17 @@ class ActualWave < ActiveRecord::Base
 	validates_attachment_presence :file, :content_type => 'audio/x-wav'
 
 
-	def size
-		File.open(beat_data, "r").readlines.size - 1
+	def picture_from_url(url)
+		self.file = open(url)
 	end
 
-	def mean
-		m = 0
-		prev_data = File.open(beat_data, "r").readline
-		File.open(beat_data, "r").each_line do |data|
-			m = m + (data.to_f - prev_data.to_f)
-			prev_data = data
-		end
-		m = m / size
-	end
-
-	def std_dev
-		m = mean
-		s = 0
-		prev_data = File.open(beat_data, "r").readline
-
-		File.open(beat_data, "r").each_line do |data|
-			unless prev_data == data
-				d = (data.to_f - prev_data.to_f) - m
-				prev_data = data
-				s = s + d * d
-			end
-		end
-		m = Math.sqrt(s / size)
-	end
-
-	def z_test
-		z_score = (mean - correct_tempo) / (std_dev / Math.sqrt(size))
-	end
-
-
+	private
 	def notes_output_path
 		"output-data/#{:id}-actual-notes.txt"
 	end
 
 	def expected_notes_output_path
 		id = self.trial.expected_wave.id
-		"output-data/#{id}-expected-notes.txt"
+		"output-data/#{:id}-expected-notes.txt"
 	end
 end
