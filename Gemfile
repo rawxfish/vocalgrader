@@ -24,6 +24,9 @@ gem 'annotate', '2.5.0', group: :development
 
 gem 'jquery-rails'
 
+ gem 'lazy_high_charts'
+ gem "highcharts-rails", "~> 2.3.0"
+
 # Facebook Open Graph
 gem 'omniauth'
 gem 'omniauth-facebook'
