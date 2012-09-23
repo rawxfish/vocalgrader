@@ -1,5 +1,6 @@
 <h1>Welcome to Vocal Grader</h1>
 
+
 <% if user_signed_in? %>
 <h2> Your Trials </h2>
 <table class="table table-striped">
@@ -33,8 +34,8 @@
 
 <h2> Create a new trial </h2>
 <%= form_for current_user.trials.build do |form| %>
-Name: <%= form.text_field :name %>
-<%= form.submit "Create", class: "btn btn-success" %>
+	Name: <%= form.text_field :name %>
+	<%= form.submit "Create", class: "btn btn-success" %>
 <% end %>
 
 <% else %>
