@@ -1,9 +1,6 @@
-<div class="home">
-<h1>Become A Rockstar <span id="today">Today</span></h1>
 
-<!-- <% if user_signed_in? %>
->>>>>>> 91d04f2978e3e9e8ef6ac97f510468427a463e18
 <h2> Your Trials </h2>
+<div class = "arena">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -20,7 +17,7 @@
 			<td><%= link_to t.name, t  %></td>
 			<td><%= t.expected_wave.file_file_name if t.expected_wave%></td>
 			<td><%= t.actual_waves.count %></td>
-			<td><!--Heinrich: Put something here--><!-- </td>
+			<td><!--Heinrich: Put something here--></td>
 			<td>
 				<%= link_to t, method: :delete, data: { confirm: "Delete Trial?" }, 
 				class: "delete_trials" do %>
@@ -31,13 +28,13 @@
 		<% end %>
 	</tbody>
 </table>
+</div>
 
-
-<h2> Create a new trial </h2>
+</br></br>
+<h2> Create A New Trial </h2>
+<div class = "create-trials">
 <%= form_for current_user.trials.build do |form| %>
 	Name: <%= form.text_field :name %>
 	<%= form.submit "Create", class: "btn btn-success" %>
 <% end %>
-
-<% end %> --> 
 </div>

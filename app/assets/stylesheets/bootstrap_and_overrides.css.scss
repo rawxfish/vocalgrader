@@ -1,15 +1,53 @@
-@import "bootswatch/superhero/variables";
+
 @import "bootstrap";
 
 body { 
   padding-top: 6em; 
+  background: url('/assets/empty.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .navbar .brand {
   font-family: 'FertigoProRegular';
   font-size: 40px;
+  color: #FFFFFF;
+  text-shadow: none;
 }
 
-@import "bootstrap-responsive";
+.navbar-inner {
+  background: none;
+  padding-top: 10px;
+}
 
-@import "bootswatch/superhero/bootswatch";
+.navbar .nav > li > a{
+  color: #FFFFFF;
+  text-shadow: none;
+  font-size: 20px;
+}
+
+h1, h2{
+  color: #9153F5;
+  font-family: 'FertigoProRegular';
+  font-size: 5em;
+}
+
+h2{
+ font-size: 35px; 
+}
+
+h1 #today{
+  color: #FF9019;
+}
+
+.arena, .create-trials{
+    background-image: url('/assets/lightpaperfibers.png');
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 10px;     
+  }
+@import "bootstrap-responsive";
