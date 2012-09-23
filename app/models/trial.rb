@@ -19,5 +19,8 @@ class Trial < ActiveRecord::Base
 	has_many :actual_waves, dependent: :destroy, class_name: "ActualWave"
 
 
+  def generate_data(actual_id)
+    system("ruby internal_tools/generate_script.rb #{self.expected_wave.id} #{actual_id}")
+  end
 
 end
