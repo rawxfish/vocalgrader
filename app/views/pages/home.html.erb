@@ -1,7 +1,6 @@
 <div class="home">
 <h1>Become A Rockstar <span id="today">Today</span></h1>
 
-
 <!-- <% if user_signed_in? %>
 <h2> Your Trials </h2>
 <table class="table table-striped">
@@ -20,7 +19,7 @@
 			<td><%= link_to t.name, t  %></td>
 			<td><%= t.expected_wave.file_file_name if t.expected_wave%></td>
 			<td><%= t.actual_waves.count %></td>
-			<td><!--Heinrich: Put something here--></td>
+			<td><!--Heinrich: Put something here--><!-- </td>
 			<td>
 				<%= link_to t, method: :delete, data: { confirm: "Delete Trial?" }, 
 				class: "delete_trials" do %>
@@ -39,5 +38,5 @@
 	<%= form.submit "Create", class: "btn btn-success" %>
 <% end %>
 
-<% end %> -->
+<% end %> --> 
 </div>

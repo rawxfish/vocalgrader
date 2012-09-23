@@ -1,12 +1,3 @@
-<head>
-	<style type="text/css">
-	.arena {
-		background-image: url('/assets/crisp_paper_ruffles.png')
-		border-radius: 10px;
-	}
-	
-	</style>
-</head>
 
 <h2> Your Trials </h2>
 <div class = "arena">
@@ -37,9 +28,11 @@
 		<% end %>
 	</tbody>
 </table>
+</div>
 
-
+</br></br>
 <h2> Create A New Trial </h2>
+<div class = "create-trials">
 <%= form_for current_user.trials.build do |form| %>
 	Name: <%= form.text_field :name %>
 	<%= form.submit "Create", class: "btn btn-success" %>

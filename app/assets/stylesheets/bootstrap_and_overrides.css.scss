@@ -41,4 +41,13 @@ h2{
 h1 #today{
   color: #FF9019;
 }
+
+.arena, .create-trials{
+    background-image: url('/assets/lightpaperfibers.png');
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 10px;     
+  }
 @import "bootstrap-responsive";
