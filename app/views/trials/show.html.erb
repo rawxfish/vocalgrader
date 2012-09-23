@@ -1,33 +1,44 @@
-<%= @trial.name %>
+<h1><%= @trial.name %></h1>
 
-<h3>Template Music File</h3>
+<h2>Template Music File</h2>
 
 <% if @trial.expected_wave %>
-  <%= @trial.expected_wave.file_file_name %>
+<%= @trial.expected_wave.file_file_name %>
 <% else %>
 
-  <%= form_for @trial.build_expected_wave, :html => { :multipart => true } do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.file_field :file %>
-	<%= f.hidden_field :trial_id, value: @trial.id %>
-	<%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
-<% end %>
-
-
-<h3>Uploaded Music Files</h3>
-<% unless @trial.actual_waves.empty? %>
-<ul>
-  <% @trial.actual_waves.each do |a|%>
-  <li><%= a.file_file_name %></li>
-  <% end %>
-</ul>
-<% end %>
-
-<%= form_for @trial.actual_waves.build, :html => { :multipart => true } do |f| %>
+<%= form_for @trial.build_expected_wave, :html => { :multipart => true } do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <%= f.file_field :file %>
 <%= f.hidden_field :trial_id, value: @trial.id %>
 <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
+<% end %>
+
+
+<h2>Uploaded Music Files</h2>
+
+<% unless @trial.actual_waves.empty? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>   
+    <% @trial.actual_waves.each do |a|%>
+    <tr>
+      <td><%= a.file_file_name %></td>
+      <td><!--Heinrich: Put something here--></td>
+    </tr>
+    <% end %>
+  </table>
+  <% end %>
+
+  <%= form_for @trial.actual_waves.build, :html => { :multipart => true } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.file_field :file %>
+  <%= f.hidden_field :trial_id, value: @trial.id %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
 

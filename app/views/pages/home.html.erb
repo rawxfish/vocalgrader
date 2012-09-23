@@ -16,7 +16,7 @@
 		<% current_user.trials.each do |t| %>
 		<tr>
 			<td><%= link_to t.name, t  %></td>
-			<td><%= link_to t.expected_wave.file_file_name, t  if t.expected_wave%></td>
+			<td><%= t.expected_wave.file_file_name if t.expected_wave%></td>
 			<td><%= t.actual_waves.count %></td>
 			<td><!--Heinrich: Put something here--></td>
 			<td>
