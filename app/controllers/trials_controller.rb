@@ -39,12 +39,24 @@ class TrialsController < ApplicationController
         @grades[i] = line.to_f
       else
         stuff = line.split(" ")
-        @freq1[i - 4] = stuff[0].to_f
-        @freq2[i - 4] = stuff[1].to_f
+        stuff1 = Hash.new
+        stuff2 = Hash.new
+        stuff1[0] = stuff[0].to_f
+        stuff2[0] = stuff[1].to_f
+        stuff1[1] = i - 4
+        stuff2[1] = i - 4
+       
+        @freq1[i - 4] = stuff1[0]
+        @freq2[i - 4] = stuff2[0]
       end
       i = i + 1
     end
     @max_freq = i - 4
-    
+    @h = LazyHighCharts::HighChart.new('graph') do |f|
+  f.options[:chart][:defaultSeriesType] = "line"
+  f.series(:name=>'expected', :data=>@freq1)
+ f.series(:name=>'attempt', :data=>@freq2)
+end
   end
+  
 end

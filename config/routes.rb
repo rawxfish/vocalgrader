@@ -22,5 +22,6 @@ Vocalgrader::Application.routes.draw do
 
   
   match '/judge' => 'trials#judge', :as => :judge
+  match '/1-1.txt' => 'trials#1-1'
   
 end
