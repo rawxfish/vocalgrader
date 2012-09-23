@@ -1,14 +1,15 @@
-@import "bootswatch/united/variables";
+@import "bootswatch/superhero/variables";
 @import "bootstrap";
 
 body { 
   padding-top: 6em; 
 }
 
-.brand {
+.navbar .brand {
   font-family: 'FertigoProRegular';
+  font-size: 40px;
 }
 
 @import "bootstrap-responsive";
 
-@import "bootswatch/united/bootswatch";
+@import "bootswatch/superhero/bootswatch";

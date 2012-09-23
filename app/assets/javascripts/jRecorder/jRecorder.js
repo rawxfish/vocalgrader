@@ -144,14 +144,7 @@
 						
 						
 						element.append(divObj);
-						
-		
-		
-		
-		
-		
-		
-		
+					
 	};
 	
 	//function call to start a recording

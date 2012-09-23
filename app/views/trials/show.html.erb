@@ -1,7 +1,7 @@
-<%= @trial.name %>
+
+<h1><%= @trial.name %></h1>
 
 <h3>Expected</h3>
-
 <% if @trial.expected_wave %>
   <%= @trial.expected_wave.file_file_name %>
 <% else %>
@@ -14,5 +14,6 @@
   <% end %>
 <% end %>
 
-
 <h3>Trials</h3>
+
+
