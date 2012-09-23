@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Myapp" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "VG" %></title>
     <meta name="description" content="">
     <meta name="author" content="">
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
+    <script src="/assets/jRecorder/jquery.min.js"> </script>
+<script src="/assets/jRecorder/jRecorder.js"> </script>
+    <link rel="stylesheet" href="/assets/fertigo_regular_macroman/stylesheet.css" type="text/css" charset="utf-8" />
   </head>
   <body>	
     <header class="navbar navbar-fixed-top">
@@ -19,20 +22,20 @@
         </div>
       </nav>
     </header>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-<%= yield %>
-</div>
-</div>
+  <div id="main" role="main">
+    <div class="container">
+      <div class="content">
+       <div class="row">
+        <div class="span12">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
+      </div>
 
-<footer>
-	</footer>
-</div>
-</div>
+      <footer>
+      </footer>
+    </div>
+  </div>
 </div>
 </body>
 </html>

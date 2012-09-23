@@ -8,7 +8,7 @@ class ActualWavesController < ApplicationController
       flash[:success] = "Music file add success!"
       redirect_to @trial
     else
-      flash[:error] = "Error: file could be added"
+      flash[:error] = "Error: file could not be added"
       redirect_to @trial
 
     end
