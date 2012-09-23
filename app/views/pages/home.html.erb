@@ -1,9 +1,43 @@
-<h1>Vocal Grader</h1>
+<h1>Welcome to Vocal Grader</h1>
 
 <% if user_signed_in? %>
-<p> Create a new trial </p>
+<h2> Your Trials </h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Trial Name</th>
+			<th>Expected Piece Name</th>
+			<th>Number of Attempts</th>
+			<th>Best Score</th>
+			<th>Delete?</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% current_user.trials.each do |t| %>
+		<tr>
+			<td><%= link_to t.name, t  %></td>
+			<td><%= link_to t.expected_wave.file_file_name, t  if t.expected_wave%></td>
+			<td><%= t.actual_waves.count %></td>
+			<td><!--Heinrich: Put something here--></td>
+			<td>
+				<%= link_to t, method: :delete, data: { confirm: "Delete Trial?" }, 
+				class: "delete_trials" do %>
+				<i class="icon-trash"></i>
+				<% end %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+<h2> Create a new trial </h2>
 <%= form_for current_user.trials.build do |form| %>
 Name: <%= form.text_field :name %>
 <%= form.submit "Create", class: "btn btn-success" %>
 <% end %>
+
+<% else %>
+<%= link_to "Login with Facebook", signin_path, class: "btn btn-large"  %>  
+
 <% end %>
