@@ -11,6 +11,10 @@ int maxA, maxE;
 float E[1000000];
 float A[1000000];
 
+double score[6];
+int shift_by;
+bool orientation;
+
 int min1(int a, int b) {
   return a < b ? a : b;
 }
@@ -24,13 +28,9 @@ float abs(float a) {
 }
 
 
-// laoma
-double score1() {
-  return 10.0;
-}
 
 // mean
-double score2() {
+void score1() {
 
   double best = 2000000;
   int maxShift = min1(2000, min(maxA, maxE)/5 - 1);
@@ -43,16 +43,22 @@ double score2() {
       s2 += abs(E[i] - A[i + shift]);
     }
     double s = min(s1, s2);
-    if (best > s/(min(maxA, maxE) - shift))
+    if (best > s/(min(maxA, maxE) - shift)) {
+      shift_by = shift;
+      orientation = (s1 < s2);
       best = s/(min(maxA, maxE) - shift);
+    }
   }
 
-  return best;
+  score[0] = best;
 }
 
-// median
-double score3() {
+// median, 25th percentile, 75th percentil
+void score2() {
   double best = 2000000;
+  double best1 = 2000000;
+  double best2 = 2000000;
+
   int maxShift = min1(2000, min(maxA, maxE)/5 - 1);
   double res1[min1(maxA, maxE) + 1];
   double res2[min1(maxA, maxE) + 1];
@@ -69,12 +75,20 @@ double score3() {
     sort(res2, res2 + cnt);
 
     double s = min2(res1[cnt/2], res2[cnt/2]);
+    double s1 = min2(res1[cnt/4], res2[cnt/4]);
+    double s2 = min2(res1[3*cnt/4], res2[3*cnt/4]);
 
     if (best > s)
       best = s;
+    if (best1 > s1)
+      best1 = s1;
+    if (best2 > s2)
+      best2 = s2;
   }
 
-  return best;
+  score[1] = best;
+  score[2] = best1;
+  score[3] = best2;
 }
 
 
@@ -106,9 +120,20 @@ int main (int argc, char *argv[]) {
   }
   maxA = cnt;
   fclose(ifp2);
-
-  fprintf(ofp, "%f\n", score1());
-  fprintf(ofp, "%f\n", score2());
-  fprintf(ofp, "%f\n", score3());
+  
+  score1();
+  score2();
+  
+  for (int i = 0; i < 4; i++) {
+    fprintf(ofp, "%f\n", score[i]);
+  }
+  
+  for (int i = 0; i < min1(maxA, maxE) - shift_by; i++) {
+     if (orientation) {
+       fprintf(ofp, "%f %f\n", E[i + shift_by], A[i]);
+     } else {
+       fprintf(ofp, "%f %f\n", E[i], A[i + shift_by]);
+     }
+  }
   fclose(ofp);
 }
