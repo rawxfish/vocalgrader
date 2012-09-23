@@ -1,15 +1,11 @@
 #!/user/bin/env ruby
 
-id = ARGV.first
+id1 = ARGV[0]
+id2 = ARGV[1]
 
-file = File.new("internal_tools/script_#{id}.sh". 'w')
 
-file.puts("#!/bin/bash\n")
-file.puts("aubionotes -i uploads/#{id}-expected.wav -v > trial_data/#{id}-expected-notes\n")
-file.puts("aubiotrack -i uploads/#{id}-expected.wav -v > trial_data/#{id}-expected-track\n")
-file.puts("aubionotes -i uploads/#{id}-actual.wav -v > trial_data/#{id}-actual-notes\n")
-file.puts("aubiotrack -i uploads/#{id}-actual.wav -v > trial_data/#{id}-actual-track\n")
-file.close
-
-system("chmod +x internal_tools/script_#{id}.sh")
-system("internal_tools/script_#{id}.sh")
+system("aubionotes -i uploads/#{id1}-expected.wav -v > trial_data/#{id1}-expected-notes\n")
+system("aubiotrack -i uploads/#{id1}-expected.wav -v > trial_data/#{id1}-expected-track\n")
+system("aubionotes -i uploads/#{id2}-actual.wav -v > trial_data/#{id2}-actual-notes\n")
+system("aubiotrack -i uploads/#{id2}-actual.wav -v > trial_data/#{id2}-actual-track\n")
+system("internal_tools/judge1 #{id1} #{id2}")

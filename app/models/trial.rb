@@ -13,11 +13,16 @@ class Trial < ActiveRecord::Base
 	attr_accessible :name
 	belongs_to :user
 
-	validates :user_id, presence: true  
+	validates :user_id, presence: true 
+	validates :name, presence: true  
+	
 
 	has_one :expected_wave, dependent: :destroy
 	has_many :actual_waves, dependent: :destroy, class_name: "ActualWave"
 
 
+  def generate_data(actual_id)
+    system("ruby internal_tools/generate_script.rb #{self.expected_wave.id} #{actual_id}")
+  end
 
 end
