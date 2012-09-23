@@ -32,30 +32,31 @@ int main (int argc, char *argv[]) {
   int id2 = atoi(argv[2]); //actual
   char buffer[200];
 
-  sprintf(buffer, "../output_data/%d-expected-notes", id1);
+  sprintf(buffer, "./trial_data/%d-expected-notes", id1);
   ifp1 = fopen(buffer, "r");
 
-  sprintf(buffer, "../output_data/%d-actual-notes", id2);
+  sprintf(buffer, "./trial_data/%d-actual-notes", id2);
   ifp2 = fopen(buffer, "r");
 
-  sprintf(buffer, "../output_data/%d-%d", id1, id2);
+  sprintf(buffer, "./output_data/%d-%d", id1, id2);
   ofp = fopen(buffer , "w");
 
-  
-  int cnt = 0;
   float n;
-  while (fscanf(ifp1, "%f", &n)) {
+  int cnt = 0;
+  while (fscanf(ifp1, "%f", &n) != EOF) {
     E[cnt++] = n;
   }
   maxE = cnt;
+  fclose(ifp1);
 
   cnt = 0;
-  while(fscanf(ifp2, "%f", &n)) {
+  while(fscanf(ifp2, "%f", &n) != EOF) {
     A[cnt++] = n;
   }
   maxA = cnt;
+  fclose(ifp2);
 
-  fprintf(ofp, "%f", 1.0);
-
-
+  int score = 100;
+  fprintf(ofp, "%d\n", score);
+  fclose(ofp);
 }
