@@ -16,21 +16,21 @@
 
 
  (function ($){
- 	
- 	
+
+
  	var methods = {
  		play : function( options ) { 
- 			
+
  			alert(options);
- 			
+
  		},
  		pause : function( ) { }
- 		
+
  	};
 
- 	
+
  	var jRecorderSettings = {} ;
- 	
+
  	$.jRecorder = function( options, element ) {
 		// allow instantiation without initializing for simple inheritance
 		
@@ -50,10 +50,10 @@
 		{
 			element = $("body");
 		}
-		
+
 		//default settings
 		var settings = {
-			
+
 			'rec_width': '300',
 			'rec_height': '200',
 			'rec_top': '0px',
@@ -71,19 +71,19 @@
 			'callback_error_recording' : function(){},
 			'callback_activityTime': function(time){},
 			'callback_activityLevel' : function(level){}
-			
-			
-			
-			
-			
+
+
+
+
+
 		};
-		
-		
+
+
 						//if option array is passed, merget the values
 						if ( options ) { 
 							$.extend( settings, options );
 						}
-						
+
 						jRecorderSettings = settings;
 						
 						
@@ -93,7 +93,7 @@
 
 							var paramStr = [
 							'<param name="movie" value="'+ settings['swf_path'] + '?host=' + settings['host'] +  '" />',
-							
+
 							'<param name="allowScriptAccess" value="always" />',
 							'<param name="bgcolor" value="' + settings['bgcolor'] + '" />',
 							'<param name="wmode" value="' +  settings['wmode'] + '" />'
@@ -144,9 +144,9 @@
 						
 						
 						element.append(divObj);
-						
+
 					};
-					
+
 	//function call to start a recording
 	$.jRecorder.record = function(max_time){
 		
@@ -154,28 +154,28 @@
 								//change z-index to make it top
 								$(  '#' + jRecorderSettings['recorderlayout_id'] ).css('z-index', 1000);
 								getFlashMovie(jRecorderSettings['recorder_name']).jStartRecording(max_time);
-								
-								
-								
+
+
+
 							} 
 
 	//function call to stop recording					
 	$.jRecorder.stop = function(){
-		
+
 		getFlashMovie(jRecorderSettings['recorder_name']).jStopRecording();
-		
+
 	} 
-	
+
 	//function call to send wav data to server url from the init configuration					
 	$.jRecorder.sendData = function(){
-		
+
 		getFlashMovie(jRecorderSettings['recorder_name']).jSendFileToServer();
-		
+
 	} 
 	
 	$.jRecorder.callback_started_recording = function(){
 		
-		
+
 		jRecorderSettings['callback_started_recording']();
 		
 	}
@@ -220,8 +220,8 @@
 		
 	}
 	
-	
-	
+
+
 	
 	//function to return flash object from name
 	function getFlashMovie(movieName) {

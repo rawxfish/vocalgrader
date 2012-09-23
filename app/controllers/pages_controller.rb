@@ -1,7 +1,4 @@
 class PagesController < ApplicationController
-  def home
-  end
-
-  def recorder
-  end
+	def home
+	end
 end

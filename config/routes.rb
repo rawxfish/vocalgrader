@@ -1,6 +1,12 @@
 Vocalgrader::Application.routes.draw do
   resources :trials
-  resources :expected_waves, :actual_waves
+  resources :expected_waves
+  resources :actual_waves do 
+    member do
+      match 'upload' 
+    end
+  end 
+
 
   root to: 'pages#home'
   
@@ -12,6 +18,7 @@ Vocalgrader::Application.routes.draw do
   match '/auth/failure' => 'sessions#failure'
   match '/signout' => 'sessions#destroy', :as => :signout
   match '/signin' => 'sessions#new', :as => :signin
-  match '/recorder' => 'pages#recorder'
+
+
   
 end
