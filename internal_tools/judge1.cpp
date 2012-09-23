@@ -123,9 +123,10 @@ int main (int argc, char *argv[]) {
   
   score1();
   score2();
-  
+
+  double mult = (1.0 * maxE) / (min1(maxA, maxE) - shift_by);
   for (int i = 0; i < 4; i++) {
-    fprintf(ofp, "%f\n", score[i]);
+    fprintf(ofp, "%f\n", score[i] * mult);
   }
   
   for (int i = 0; i < min1(maxA, maxE) - shift_by; i++) {
