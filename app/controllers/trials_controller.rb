@@ -21,6 +21,10 @@ class TrialsController < ApplicationController
 
   def show
     @trial = Trial.find(params[:id])
+  end 
+  
+  def judge
+    
   end
 
 end
