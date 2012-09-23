@@ -5,6 +5,7 @@ class CreateWaves < ActiveRecord::Migration
 
 			t.timestamps
 		end
+
 		create_table :actual_waves do |t|
 			t.integer :trial_id
 

@@ -8,6 +8,9 @@ class TrialsController < ApplicationController
   end
 
   def destroy
+    Trial.find(params[:id]).destroy
+    flash[:success] = "Trial deleted."
+    redirect_to current_user 
   end
 
   def index
@@ -15,7 +18,6 @@ class TrialsController < ApplicationController
 
   def show
     @trial = Trial.find(params[:id])
-    @expected_wave = @trial.build_expected_wave
   end
 
 end
