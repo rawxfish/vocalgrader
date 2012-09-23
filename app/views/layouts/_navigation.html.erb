@@ -2,6 +2,7 @@
 <ul class="nav pull-right">
   <% if user_signed_in? %>
     <li>
+    	<%= link_to('Profile', user_path(current_user))%>
     <%= link_to('Logout', signout_path) %>        
     </li>
   <% else %>
