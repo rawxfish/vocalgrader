@@ -12,26 +12,26 @@
  * Date: 14 December 2011
  */
 
-/* Code is not verified using http://www.jshint.com/ */
+ /* Code is not verified using http://www.jshint.com/ */
 
 
-(function ($){
-	
-	
-	var methods = {
-    	play : function( options ) { 
-					
-					alert(options);
-				
-	 			},
-    	pause : function( ) { }
-    
-  	};
+ (function ($){
 
-	
-	var jRecorderSettings = {} ;
-	
-	$.jRecorder = function( options, element ) {
+
+ 	var methods = {
+ 		play : function( options ) { 
+
+ 			alert(options);
+
+ 		},
+ 		pause : function( ) { }
+
+ 	};
+
+
+ 	var jRecorderSettings = {} ;
+
+ 	$.jRecorder = function( options, element ) {
 		// allow instantiation without initializing for simple inheritance
 		
 		
@@ -50,53 +50,53 @@
 		{
 			element = $("body");
 		}
-			
+
 		//default settings
-						var settings = {
-		
-						'rec_width': '300',
-						'rec_height': '200',
-						'rec_top': '0px',
-						'rec_left': '0px',
-						'recorderlayout_id' : 'flashrecarea',
-						'recorder_id' : 'audiorecorder',
-						'recorder_name': 'audiorecorder',
-						'wmode' : 'transparent',
-						'bgcolor': '#ff0000',
-						'swf_path': 'jRecorder.swf',
-						'host': 'acceptfile.php?filename=hello.wav',
-						'callback_started_recording' : function(){},
-						'callback_finished_recording' : function(){},
-						'callback_stopped_recording': function(){},
-						'callback_error_recording' : function(){},
-						'callback_activityTime': function(time){},
-						'callback_activityLevel' : function(level){}
-						
-						
-						
-		
-		
-						};
-	
-	
+		var settings = {
+
+			'rec_width': '300',
+			'rec_height': '200',
+			'rec_top': '0px',
+			'rec_left': '0px',
+			'recorderlayout_id' : 'flashrecarea',
+			'recorder_id' : 'audiorecorder',
+			'recorder_name': 'audiorecorder',
+			'wmode' : 'transparent',
+			'bgcolor': '#ff0000',
+			'swf_path': 'jRecorder.swf',
+			'host': 'acceptfile.php?filename=hello.wav',
+			'callback_started_recording' : function(){},
+			'callback_finished_recording' : function(){},
+			'callback_stopped_recording': function(){},
+			'callback_error_recording' : function(){},
+			'callback_activityTime': function(time){},
+			'callback_activityLevel' : function(level){}
+
+
+
+
+
+		};
+
+
 						//if option array is passed, merget the values
 						if ( options ) { 
-					        $.extend( settings, options );
-					     }
-		
+							$.extend( settings, options );
+						}
+
 						jRecorderSettings = settings;
 						
 						
 						
-							if($.browser.msie && Number($.browser.version) <= 8) {
+						if($.browser.msie && Number($.browser.version) <= 8) {
 							var objStr = '<object  name="'+ settings['recorder_name'] +'" id="' + settings['recorder_id'] + '" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="'+ settings['rec_width'] +'" height="'+ settings['rec_height']+'"></object>';
 
 							var paramStr = [
-								'<param name="movie" value="'+ settings['swf_path'] + '?host=' + settings['host'] +  '" />',
-								
-								'<param name="allowScriptAccess" value="always" />',
-								'<param name="bgcolor" value="' + settings['bgcolor'] + '" />',
-								'<param name="wmode" value="' +  settings['wmode'] + '" />'
+							'<param name="movie" value="'+ settings['swf_path'] + '?host=' + settings['host'] +  '" />',
+
+							'<param name="allowScriptAccess" value="always" />',
+							'<param name="bgcolor" value="' + settings['bgcolor'] + '" />',
+							'<param name="wmode" value="' +  settings['wmode'] + '" />'
 							];
 
 							htmlObj = document.createElement(objStr);
@@ -144,9 +144,9 @@
 						
 						
 						element.append(divObj);
-					
-	};
-	
+
+					};
+
 	//function call to start a recording
 	$.jRecorder.record = function(max_time){
 		
@@ -154,28 +154,28 @@
 								//change z-index to make it top
 								$(  '#' + jRecorderSettings['recorderlayout_id'] ).css('z-index', 1000);
 								getFlashMovie(jRecorderSettings['recorder_name']).jStartRecording(max_time);
-							
-							
-		
-						} 
+
+
+
+							} 
 
 	//function call to stop recording					
 	$.jRecorder.stop = function(){
-					
+
 		getFlashMovie(jRecorderSettings['recorder_name']).jStopRecording();
-							
+
 	} 
-		
+
 	//function call to send wav data to server url from the init configuration					
 	$.jRecorder.sendData = function(){
-					
+
 		getFlashMovie(jRecorderSettings['recorder_name']).jSendFileToServer();
-							
+
 	} 
 	
 	$.jRecorder.callback_started_recording = function(){
 		
-	
+
 		jRecorderSettings['callback_started_recording']();
 		
 	}
@@ -220,14 +220,14 @@
 		
 	}
 	
-		
-					
+
+
 	
 	//function to return flash object from name
 	function getFlashMovie(movieName) {
-       var isIE = navigator.appName.indexOf("Microsoft") != -1;
-       return (isIE) ? window[movieName] : document[movieName];
-     }
+		var isIE = navigator.appName.indexOf("Microsoft") != -1;
+		return (isIE) ? window[movieName] : document[movieName];
+	}
 
 
 	
